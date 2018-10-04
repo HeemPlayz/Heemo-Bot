@@ -1249,7 +1249,7 @@ client.on('message', message => {
 client.on('message', message => {
  if (true) {
 if (message.content === '!inv') {
-     message.author.send(' Bot Link |  https://discordapp.com/api/oauth2/authorize?client_id=480067910966968330&permissions=0&scope=bot ').catch(e => console.log(e.stack));
+     message.author.send(' Bot Link |  https://discordapp.com/api/oauth2/authorize?client_id=495548675465019433&permissions=0&scope=bot ').catch(e => console.log(e.stack));
 
    }
   } 
@@ -1258,7 +1258,7 @@ if (message.content === '!inv') {
  client.on('message', message => {
  if (true) {
 if (message.content === '!invite') {
-     message.author.send(' Bot Link |  https://discordapp.com/api/oauth2/authorize?client_id=480067910966968330&permissions=0&scope=bot ').catch(e => console.log(e.stack));
+     message.author.send(' Bot Link |  https://discordapp.com/api/oauth2/authorize?client_id=495548675465019433&permissions=0&scope=bot ').catch(e => console.log(e.stack));
 
    }
   } 
