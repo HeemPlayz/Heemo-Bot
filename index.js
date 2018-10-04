@@ -2623,7 +2623,7 @@ if (message.content === "!help") {
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
 
-https://discord.gg/vumJWpv
+https://discord.gg/qTfrq3d
 
 سيرفر الدعم الفني | Support Server
 
