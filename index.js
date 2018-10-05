@@ -1602,7 +1602,7 @@ client.on('guildMemberAdd', member => {
 client.on('message', message => {
  if (true) {
 if (message.content === '!support') {
-     message.author.send(' |https://discord.gg/vumJWpv| For any Problem').catch(e => console.log(e.stack));
+     message.author.send(' |https://discord.gg/qTfrq3d| For any Problem').catch(e => console.log(e.stack));
 
    }
   } 
