@@ -191,8 +191,6 @@ message.channel.send('**لديك 15 ثانية لتوجد العاصمه الص�
 }
 });
 
-let points = "client";
-
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
     points: 50,
