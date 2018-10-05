@@ -2666,7 +2666,7 @@ client.on('message', message => {
 	 
 🇦 القرآن كاملاً ماهر المعيقلي
 🇧 سورة البقرة كاملة للشيخ مشاري العفاسي
-🇨 سورة الكهف كاملة بصوت مشارى بن راشد العفاسي
+🇨 سورة الكهف كاملة بصوت ماهر المعيلقي
 ⏹ لإيقاف القرآن الكريم
 🇩 القرآن كاملاً عبدالباسط عبدالصمد
 🇪 القرآن كاملاً ياسر الدوسري
@@ -2737,7 +2737,7 @@ collector2.on('collect', r => {
 collector3.on('collect', r => {
     voiceChannel.join()
       .then(connnection => {
-        const stream = ytdl("https://www.youtube.com/watch?v=8UWKiKGQmsE", { filter: 'audioonly' });
+        const stream = ytdl("https://www.youtube.com/watch?v=4mzp4j-XDUw", { filter: 'audioonly' });
         const dispatcher = connnection.playStream(stream);
         dispatcher.on('end', () => voiceChannel.leave());
 		collector1.stop();
