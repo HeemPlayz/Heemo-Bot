@@ -37,6 +37,266 @@ client.on('ready', () => {
           client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});     //Heeeeeemo    
 });
 
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
+  };
+if (message.content.startsWith(prefix + 'عواصم')) { 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+const type = require('./3wasem.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**لديك 15 ثانية لتوجد العاصمه الصحيحه**').then(msg => {
+    let embed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setFooter("عواصم  |Heem Bot", 'https://cdn.discordapp.com/avatars/464357784247599104/98777979b17586bc1af26beaa423e818.png')
+    .setDescription(`**اكتب عاصمه: ${item.type}**`)
+
+    msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
+
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            console.log(`[Typing] ماحد قال الاجابه `);
+          })
+        })
+    })
+}
+});
+
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
+  };
+if (message.content.startsWith('!math')) { 
+    if(!message.channel.guild) return message.reply('**This command for Servers**').then(m => m.delete(3000));
+
+const type = require('./read.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**You have 15 Seconds**').then(msg => {
+    let embed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setFooter("Math  | Heem Bot", 'https://cdn.discordapp.com/avatars/464357784247599104/98777979b17586bc1af26beaa423e818.png')
+    .setDescription(`** ${item.type}**`)
+
+    msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **Correct Answer**`); //mohamed192837465#7033صاحب الكود
+
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: **No One wrote the Correct Answer**`);
+            console.log(`[Typing] ماحد قال الاجابه `);
+          })
+        })
+    })
+}
+});
+
+var rebel = ["https://media.giphy.com/media/pjk3wZcciRENa/giphy.gif","http://78.media.tumblr.com/fd4383e21495f2bb10ed699cd73f22ca/tumblr_n5l0pk3w4E1so8ds0o1_500.gif","https://media1.giphy.com/media/14309XrKEC7yyk/giphy.gif","http://gifimage.net/wp-content/uploads/2017/06/anime-gif-13-1.gif","https://i.imgur.com/M3BG3Ck.gif","https://4.bp.blogspot.com/-yDd1fLFMKts/WeX_LrmWhwI/AAAAAAAALsU/mLO7KCD0DFMp8n8xbdMdJNR5V2D0D9WXwCLcBGAs/s1600/tenor.gif","https://secure.static.tumblr.com/940bbaba171f6b2f2dabd11c17fd3f20/kj1pjcr/jxWok11nj/tumblr_static_filename_640_v2.gif","https://data.whicdn.com/images/110768190/original.gif","http://78.media.tumblr.com/80f12fdc314760b2ba3e10204e33323d/tumblr_nc1n9weNg11tk3dxfo1_500.gif","https://78.media.tumblr.com/ec3f0546a20a75cd47c00e95ef0ba0a7/tumblr_o3oyhk49JC1u6348eo1_500.gif","https://thumbs.gfycat.com/MassiveUnlinedDarwinsfox-max-1mb.gif","https://data.whicdn.com/images/120798528/original.gif","https://i.gifer.com/NZcE.gif","https://media.giphy.com/media/2aH3YUqjx92cE/giphy.gif","https://78.media.tumblr.com/99fcbe4544d83d27babb216a3f3bb8a3/tumblr_n1shx2AC2e1qztgoio3_500.gif","https://data.whicdn.com/images/81429641/original.gif","https://78.media.tumblr.com/6eace49891b549d558f3d1a2c0ad3c98/tumblr_n4xmoqCrPj1spu161o8_500.gif","https://pa1.narvii.com/6088/b868bd47eb802373aa8b8203f76b07dd04846d1f_hq.gif","https://cdn.discordapp.com/attachments/458384513173684224/460742842503921669/Tumblr_mdi9s0YkbA1rao0vlo1_500.gif","https://cdn.discordapp.com/attachments/458384513173684224/460742882064728065/Chuunibyou-Demo-Koi-Ga-Shitai-6.gif"]
+    client.on('message', message => {
+        var args = message.content.split(" ").slice(1);
+    if(message.content.startsWith('!anime')) {
+         var cat = new Discord.RichEmbed()
+.setImage(rebel[Math.floor(Math.random() * rebel.length)])
+message.channel.sendEmbed(cat);
+    }
+});
+
+var memes = ["https://scontent-cai1-1.xx.fbcdn.net/v/t1.15752-9/35991835_774489796273551_4340597720042438656_n.jpg?_nc_cat=0&_nc_eui2=AeEh31C9mhk6Wb5ikc8KPYhu16kmZG4-ikpMYNY-irTawjRfKs3pRTFg8R-Foy1lFLUtiWdgi6WLPcHC2VezXMv9IO8OBV3XUHLsDYvQ_6-jAg&oh=158ea5073bca5bd074daf6cc02db373f&oe=5BA3E627","https://scontent-cai1-1.xx.fbcdn.net/v/t1.15752-9/35836787_774489856273545_3116994058904403968_n.jpg?_nc_cat=0&_nc_eui2=AeE2pSA3QGuPD17m0f_xdLPDVsnxM7SNc-AVRIOc5B4ebgYO068KndkDzwwAD-YSimH9SEl58EpH7qRPy0FyIzyEKsTnXnuiomJdOC6OgHEQ0Q&oh=b7c21fc3d8293a5b7309d55589b1e0af&oe=5BB29478","https://i.imgur.com/nKeiLcW.jpg","https://i.imgur.com/Ou89M9D.jpg","https://i.imgur.com/eVlU1tS.png","https://i.imgur.com/ONaJuP6.jpg","https://i.imgur.com/Jazv0Nn.jpg","https://i.imgur.com/lxfsXDz.jpg","https://i.imgur.com/LS0TPvs.png","https://i.imgur.com/T7utZo4.jpg","https://i.imgur.com/aSSa51l.jpg","https://i.imgur.com/FxOhBqf.png","http://www.thecarpenterbuilding.com/wp-content/uploads/2016/05/coming-soon.jpg"]
+    client.on('message', message => {
+        var args = message.content.split(" ").slice(1);
+    if(message.content.startsWith('!memes')) {
+         var meme = new Discord.RichEmbed()
+.setImage(memes[Math.floor(Math.random() * memes.length)])
+message.channel.sendEmbed(meme);
+    }
+});
+
+var dab = ["https://scontent-sea1-1.cdninstagram.com/vp/f74bf3c2451cbf4a08a541e46de27889/5B5B6139/t51.2885-15/s480x480/e35/16230653_402791260069966_4987205548966412288_n.jpg","http://www.foot24.tn/thumbs/pogba%20dab.variant960x540.dd25b1-650x286.jpg","https://sm1.narvii.com/6602/c1f51eb618f7a36f9a77a934fc3984333c9a8f25_00.jpg","https://i.pinimg.com/originals/f5/84/d6/f584d6fe0d5173d717d1671bfa3f0d14.jpg","https://ih0.redbubble.net/image.259546796.9462/flat,800x800,075,f.jpg","https://upload.wikimedia.org/wikipedia/commons/f/fc/Dab_on_em_spongebob.jpg","https://i.ebayimg.com/images/g/XDQAAOSwTuJYs-7S/s-l300.jpg","https://cdn116.picsart.com/214968289003202.jpg?r1024x1024","https://i.pinimg.com/originals/48/32/5f/48325ffdd52c62e0db33db6edc1a8927.jpg","http://pm1.narvii.com/6815/f775300721729acee96c440a88b64b5864ac19c9v2_00.jpg","https://i.ytimg.com/vi/gp2Ydp-mOQw/maxresdefault.jpg","https://static.vibe.com/files/2017/08/singer-arrested-for-dabbing-1502464143-640x798.jpg","https://cdn6.dissolve.com/p/D23_34_318/D23_34_318_1200.jpg","http://www.thecarpenterbuilding.com/wp-content/uploads/2016/05/coming-soon.jpg"]
+    client.on('message', message => {
+        var args = message.content.split(" ").slice(1);
+    if(message.content.startsWith('!dab')) {
+         var dabs = new Discord.RichEmbed()
+.setImage(dab[Math.floor(Math.random() * dab.length)])
+message.channel.sendEmbed(dabs);
+    }
+});
+
+const pubg = [
+     'PUBG | ما هو اقوي سلاح برائيك ؟',
+     'PUBG | اين تجد سلاح الجروزا ؟ Grozza',
+     'PUBG | ماذا تفضل اكثر ام فور ام سكار ؟',
+     'PUBG | ايهما تفضل vss ام Awm',
+     'PUBG | ماذا تفضل اكثر ؟ سولو ام سكواد ؟',
+     'PUBG | كم جيم كسبت في العبه ؟',
+     'PUBG | ما هو اكثر عدد قتلت في مسيرتك بالعبه',
+     'PUBG | اذا انت المركز ال 2 هل سوف تقوم بتمشي علي رجلك ام ستاخذ سياره تحميك ؟',
+     'PUBG | اذا وجدت شخصين يتقاتلان , هل سوف تتقاتل معهم ام تنتظر قليلا حتي يقتل احدهما الاخر ؟',
+     'PUBG | اذا صديقك بالاسكواد يحتاج مساعده هل تساعده ام تتركه ؟',
+     'PUBG | اذا تم عمل لصديقك كونك اوت وامامك لوت كثير جدا سوف تذهب لتساعده ام تاخذ الوت وتدعه يموت ؟',
+     'PUBG | اين تجد ملابس القناصه ؟ ghillie suit ?',
+     'PUBG | ايهما تفضل ؟ الاختباء حتي يتبقي اشخاص قليله ام تذهب لتقتل ولا تختبئ',
+     'PUBG | اين تفضل ان تهبط من الطائره ؟ الاماكن الهادئيا لوت صغير ام الاماكن المزدحمه بالاعبين لاكن لوت كثير',
+     'PUBG | كم عدد المرات التي فزت بها لوحدك سولو ؟',
+     'PUBG | ما هو افضل سلاح تجيد استخدامه ؟',
+     'PUBG | ما هو اندر سلاح قد تجده برائيك ؟',
+     'PUBG | ما هو اندر سلاح جديد قد تجده برائيك ؟',
+     'PUBG | ما هو عدوك في العبه لاق البنق ام لاق الفريمات الاف بي اس ؟',
+     'PUBG | ايهما تفضل العب ؟ فـ المساء ام الصباح ؟',
+     'PUBG | هل تحب ان يكون الجيم ملئ بلاعبين ام لاعبين قليلين ؟',
+     'PUBG | هل الملابس تعبر عن انك محترف ام لا ؟',
+     'PUBG | كم معك من مال ( كوين ) بلعبه ؟',
+     'PUBG | ما هو اكثر شئ تكرهه في العبه ؟',
+     'PUBG | ما هو اكثر شئ تحبه بلعبه ؟',
+     'PUBG | ماذا تفضل شتو قن ( بندقيه ) ام قناصه ؟',
+     'PUBG | ماذا تفضل اكثر ؟ درع لفل 3 متضرر ام درع لفل 2 غير متضرر',
+     'PUBG | تفضل ان تلعب مع صديقك سكواد ام شخص غريب ؟',
+     'PUBG | هل تظن انك افضل شخص في اصدقائك بهذه اللعبه؟',
+     'PUBG | قيم نفسك من 10 كـ احتراف لك بالعبه',
+     'PUBG | هل فزت جيم من قبل بالعبه ؟',
+     'PUBG | هل وصلت للمركز ال 10 ( توب 10 ) قبل هكذا بلعبه ؟',
+     'PUBG | هل قمت بلعب مع صديقك من قبل بلعبه ؟',
+     'PUBG | هل تعلم من اخترع العبه ؟',
+     'PUBG | لو خيروك لعبه ببجي ام فورت نايت ؟',
+     'PUBG | هل يوجد شخص من اصدقاءك محترف اكثر منك ام انت اكثر شخص محترف ما بين اصدقاءك ؟',
+     'PUBG | اذا كنت من فريق مطورين العبه ماذا ستفعل ؟',
+     'PUBG | قيم من 10 مدي حبك للعبه',
+     'PUBG | هل تحب ان تتكلم صوت مع اصدقاءك وانت تلعب معاهم ام لا تحب هذا الامر ؟',
+ 
+]
+   client.on('message', message => {
+       if (message.author.bot) return;
+ if (message.content.startsWith('!pubg')) {
+     if(!message.channel.guild) return message.reply('** This command only for servers **');
+  var client= new Discord.RichEmbed()
+  .setTitle("لعبه اسئله باتل جرواند")
+  .setColor('#FFA500')
+  .setDescription(`${pubg[Math.floor(Math.random() * pubg.length)]}`)
+  .setImage("https://cdn.discordapp.com/attachments/416617103492251658/477741838292484127/pubg-orange-square.png")
+                  .setTimestamp()
+ 
+   message.channel.sendEmbed(client);
+   message.react("??")
+ }
+});
+
+client.on('message', message => {
+       var prefix = "-";
+      if(message.content === "!show") {
+      if(!message.channel.guild) return;
+      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('❌');
+             message.channel.overwritePermissions(message.guild.id, {
+             READ_MESSAGES: true
+ })
+              message.channel.send('Done  ')
+ }
+});
+
+client.on('message', message => {
+var prefix = "-";
+      if(message.content === "!hide") {
+      if(!message.channel.guild) return;
+      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You Dont Have Perms ❌');
+             message.channel.overwritePermissions(message.guild.id, {
+             READ_MESSAGES: false
+ })
+              message.channel.send('Channel Hided Successfully ! ✅  ')
+ }
+});
+
+client.on("message", message => {
+        let args = message.content.split(" ").slice(1);
+      if (message.content.startsWith('!report')) {
+            let user = message.mentions.users.first();
+            let reason = args.slice(1).join(' ');
+            let modlog = client.channels.find('name', 'reports');
+            if (!reason) return message.reply('**Write a Reason**');
+              if (message.mentions.users.size < 1) return message.reply('**Mention the Member you want to report**').catch(console.error);
+       
+        if (!modlog) return message.reply('**No such a Room Called __report__**');
+        const embed = new Discord.RichEmbed()
+          .setColor(0x00AE86)
+          .setTimestamp()
+          .addField('Text Type:', 'Report')
+          .addField('Reported:', `${user.username}#${user.discriminator} (${user.id}`)
+          .addField('Reported By:', `${message.author.username}#${message.author.discriminator}`)
+          .addField('Reason', reason);
+          message.delete()
+          return client.channels.get(modlog.id).sendEmbed(embed).catch(console.error);
+          console.log('[report] Send By: ' + message.author.username)
+      }
+      });
+
+client.on('message', message => {
+ if(message.content.startsWith("!kiss")) {
+   let args = message.content.split(" ").slice(1);
+    let hug = [
+        "https://media.giphy.com/media/KH1CTZtw1iP3W/giphy.gif",
+        "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif",
+        "https://media.giphy.com/media/G3va31oEEnIkM/giphy.gif",
+        "https://media.giphy.com/media/nyGFcsP0kAobm/giphy.gif",
+        "https://media.giphy.com/media/kU586ictpGb0Q/giphy.gif",
+        "https://media.giphy.com/media/bm2O3nXTcKJeU/giphy.gif",
+        "https://media.giphy.com/media/BaEE3QOfm2rf2/giphy.gif",
+        "https://media.giphy.com/media/OSq9souL3j5zW/giphy.gif",
+        "https://media.giphy.com/media/vUrwEOLtBUnJe/giphy.gif",
+        "https://media.giphy.com/media/dP8ONh1mN8YWQ/giphy.gif",
+        "https://data.whicdn.com/images/271163043/original.gif",
+        "https://media.giphy.com/media/Ka2NAhphLdqXC/giphy.gif",
+        "https://media.giphy.com/media/zkppEMFvRX5FC/giphy.gif",
+        "https://media.giphy.com/media/wOtkVwroA6yzK/giphy.gif",
+        "https://media.giphy.com/media/flmwfIpFVrSKI/giphy.gif",
+        "https://media.giphy.com/media/mGAzm47irxEpG/giphy.gif",
+        "https://media.giphy.com/media/JynbO9pnGxPrO/giphy.gif",
+    ]
+    let hugresult = Math.floor((Math.random() * hug.length));
+    if (!args[0]) {
+        const ghembed = new Discord.RichEmbed()
+            .setColor(0xFF0000)
+            .setTitle(`${message.author.username} chu can't kiss yourself...! B-but there you go..`)
+           .setImage('https://cdn.discordapp.com/attachments/461525860910891008/462634925300908056/SydfnauPb-1.gif/')
+        message.channel.send({
+            embed: ghembed
+        })
+        return;
+    }
+    if (!message.mentions.members.first().user.username === message.isMentioned(message.author)) {
+        const hembed = new Discord.RichEmbed()
+            .setColor(0xFF0000)
+            .setTitle(`${message.author.username} gave ${message.mentions.members.first().user.username} a kiss! How sweet!`)
+            .setImage(hug[hugresult])
+        message.channel.send({
+            embed: hembed
+        })
+        return;
+    }
+    const ghembed = new Discord.RichEmbed()
+        .setColor(0xFF0000)
+        .setTitle(`${message.author.username} chu can't kiss yourself...! B-but there you go..`)
+       .setImage('https://cdn.discordapp.com/attachments/461525860910891008/462634925300908056/SydfnauPb-1.gif/')
+    message.channel.send({
+        embed: ghembed
+    })
+}
+});
+
 client.on('message' , message => {
     var prefix = "!";
     let user = message.mentions.users.first()|| client.users.get(message.content.split(' ')[1])
