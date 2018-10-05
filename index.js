@@ -3000,6 +3000,16 @@ if (message.content === "!help") {
 :dollar: !trans 『Transfer Money』
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
+:small_blue_diamond: !dab 『Send an Image of **Dab**』
+
+:small_blue_diamond: !anime 『Send a gif or Image of **Animes**』
+
+:small_blue_diamond: !kiss 『Kiss your Friend』
+
+:small_blue_diamond: !memes 『Send an Image od **Memes**』
+
+:small_blue_diamond: !pubg 『Send Questions of **Pubg** Game』
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
 
 https://discord.gg/qTfrq3d
 
