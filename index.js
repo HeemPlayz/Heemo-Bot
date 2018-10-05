@@ -37,26 +37,6 @@ client.on('ready', () => {
           client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});     //Heeeeeemo    
 });
 
-client.on('message', message => {
-  if (message.content.startsWith("!gen")) {
-    message.reply(`يجب عليك الانتظار 5 دقايق حتى تحصل على حساب اخر`) 
-if(cool.has(message.author.id)) return;
-cool.add(message.author.id);
-setTimeout(() => {
-cool.delete(message.author.id);
-}, 300000);
-       message.reply(`تم ارساله الحساب في الخاص`)
-               if(!message.channel.guild) return message.reply('** This command only for servers**');
-  var embed = new Discord.RichEmbed()
-  .setColor('RANDOM')
-  .setThumbnail(message.author.avatarURL) 
-    .addField('Spotify حساب',
-  `${cuttweet[Math.floor(Math.random() * cuttweet.length)]}`)
-  message.author.sendEmbed(embed);
-  console.log('[id] Send By: ' + message.author.username)
-   }
-  });
-
 client.on('message', async message => {
       //!fortnite Ninja solo pc
   let Client = require('fortnite');
