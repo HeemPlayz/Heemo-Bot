@@ -10,6 +10,7 @@
     "array-sort": "1.0.0",
     "ascii-data-table": "^2.1.1",
     "canvas": "1.6.10",
+    "hh-mm-ss": "1.2.0",
     "common-tags": "1.7.2",
     "dateformat": "3.0.3",
     "discord.js": "^11.3.2",
