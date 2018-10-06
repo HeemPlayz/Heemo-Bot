@@ -40,7 +40,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     
-if(message.content.split(' ')[0] == '!id') {
+if(message.content.split(' ')[0] == '!profile') {
 if(!message.channel.guild) return;
 
 let args = message.content.split(' ').slice(1).join(' ');
