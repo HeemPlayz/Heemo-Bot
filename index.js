@@ -802,9 +802,9 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-  if (msg.content === 'الجزائر') {      
-    msg.react(":flag_ps:")
-    msg.channel.send(":flag_ps:")
+  if (msg.content === 'فلسطين') {      
+    msg.react(":flag_ps: ")
+    msg.channel.send(":flag_ps: ")
   }
 });
 
@@ -2919,7 +2919,7 @@ collector1.on('collect', r => {
 collector2.on('collect', r => {
     voiceChannel.join()
       .then(connnection => {
-        const stream = ytdl("https://www.youtube.com/watch?v=qFq5h4wtjaM&t=30s", { filter: 'audioonly' });
+        const stream = ytdl("https://www.youtube.com/watch?v=ZWV2kuxQHtw", { filter: 'audioonly' });
         const dispatcher = connnection.playStream(stream);
         dispatcher.on('end', () => voiceChannel.leave());
 		collector1.stop();
