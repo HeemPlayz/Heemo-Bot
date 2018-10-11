@@ -7,6 +7,7 @@ const convert = require("hh-mm-ss");
 const dateFormat = require('dateformat');
 const figlet = require('figlet');
 const request = require('request');
+const gif = require("gif-search");
 const moment = require('moment');
 const r1 = require('snekfetch'); 
 const fs = require('fs');
@@ -37,6 +38,86 @@ client.on('ready', () => {
     console.log('')
     console.log('╚[════════════════════════════════════]╝')
           client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});     //Heeeeeemo    
+});
+
+client.on('message', message => {
+    var prefix ="$$"
+    if(message.content.startsWith('!gif')) {
+console.log('[Gif Search] Developed By Ghost')
+        if(message.channel.type === 'dm') return message.channel.send('Only For Servers')
+        let args = message.content.split(' ').slice(1).join(' ')
+            if (!args) return message.reply('يجب كتابة أسم الصورة')
+    gif.query(args).then(gifUrl => {
+        message.channel.send({
+            files: [{
+                attachment: gifUrl,
+                name: "search.gif"
+            }]
+        });
+    });
+}
+});
+
+client.on('message' , async (message) => {
+       if(message.content.startsWith(prefix + "rps")) {
+              let args = message.content.split(" ").slice(1);
+  var choice = args[0];
+  if (choice == "ورقة" || choice == "p") {
+    var numb = Math.floor(Math.random() * 100);
+    if (numb <= 50) {
+      var choice2 = "ورقة";
+    } else if (numb > 50) {
+      var choice2 = "حجر";
+    } else {
+      var choice2 = "مقص";
+    }
+    if (choice2 == "مقص") {
+      var response = " لقد اخترت **مقص** و :v: ولقد فزت"
+    } else if (choice2 == "ورقة") {
+      var response = " لقد اخترت **ورقه** :hand_splayed: انه تعادل "
+    } else {
+      var response = " لقد اخترت **حجر** :punch:  انت الفائز"    
+    }
+    message.channel.send(response);
+  } else if (choice == "حجر" || choice == "r") {
+    var numb = Math.floor(Math.random() * 100);
+    if (numb <= 50) {
+      var choice2 = "ورقة";
+    } else if (numb > 50) {
+      var choice2 = "حجر";
+    } else {
+      var choice2 = "مقص";
+    }
+    if (choice2 == "ورقة") {
+      var response = " لقد اخترت **ورقه** :hand_splayed: ولقد فزت"
+    } else if (choice2 == "حجر") {
+      var response = "لقد اخترت **حجر** :punch: انه تعادل "
+    } else {
+      var response = " لقد اخترت **مقص** :v: انت الفائز"
+    }
+    message.channel.send(response);
+  } else if (choice == "مقص" || choice == "s") {
+    var numb = Math.floor(Math.random() * 100);
+    if (numb <= 50) {
+      var choice2 = "ورقة";
+    } else if (numb > 50) {
+      var choice2 = "حجر";
+    } else {
+      var choice2 = "مقص";
+    }
+    if (choice2 == "حجر") {
+      var response = "لقد اخترت **ورقه** :hand_splayed: لقد فزت"
+    } else if (choice2 == "مقص") {
+      var response = "لقد اخترت **مقص** :v: انه تعادل"
+    } else {
+      var response = " لقد اخترت **حجر** :punch: انت الفائز "
+    }
+    message.channel.send(response);
+  } else {
+    message.channel.send(`يجب عليك استعمال \`${prefix}rps\` <حجر|ورقة|مقص>`);
+  }
+}
+
 });
 
 client.on('message', message => {
