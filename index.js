@@ -802,6 +802,14 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
+  if (msg.content === 'الجزائر') {      
+    msg.react(":flag_ps:")
+    msg.channel.send(":flag_ps:")
+  }
+});
+
+
+client.on('message', msg => {
   if (msg.content === 'الامارات') {      
     msg.react("🇦🇪")
     msg.channel.send("🇦🇪")
