@@ -59,6 +59,61 @@ console.log('[Gif Search] Developed By Ghost')
 }
 });
 
+let points = JSON.parse(fs.readFileSync('./points.json', 'utf8')); // يقوم بقراءه ملف النقاط , والمسار حق النقاطس العام لجميع الأوامر
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 0,
+  };
+if (message.content.startsWith(prefix + 'فكك')) {
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+const type = require('./fkk.json');
+const item = type[Math.floor(Math.random() * type.length)];
+const filter = response => {
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**لديك 15 ثانيه لتفكيك الكلمه**').then(msg => {
+let embed = new Discord.RichEmbed()
+.setColor("04791c")
+ .setImage(`${item.type}`)
+msg.channel.send(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+         const sh = new Discord.RichEmbed()
+.setColor("04791c")
+.setDescription('**? |Good Job +1P**')
+.addField('Type G.mypoints', 'To Show ur Points' , true)
+.setFooter(message.author.username, message.author.avatarURL)
+message.channel.sendEmbed(sh);
+        let won = collected.first().author;
+                points[won.id].points++;
+        })
+           .catch(collected => { // في حال لم يقم أحد بالإجابة
+            message.channel.send(`?? |**Time Is End**`);
+           })
+          fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err)
+          })
+        })
+    })
+}
+})
+client.on('message', message => {
+if (message.content.startsWith(prefix + 'mypoints')) {
+	if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+	let userData = points[message.author.id];
+	let embed = new Discord.RichEmbed()
+    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
+	.setColor('#000000')
+	.setDescription(`نقاطك: \`${userData.points}\``)
+	message.channel.sendEmbed(embed)
+  }
+  fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err)
+  })
+});
+
+
 client.on('message' , async (message) => {
        if(message.content.startsWith(prefix + "rps")) {
               let args = message.content.split(" ").slice(1);
@@ -424,80 +479,6 @@ client.on('message', async message => {
     }
     })
     }
-});
-
-let points = "client";
-
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 50,
-  };
-if (message.content.startsWith('!عواصم')) { 
-    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-
-const type = require('./3wasem.json'); 
-const item = type[Math.floor(Math.random() * type.length)]; 
-const filter = response => { 
-    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**لديك 15 ثانية لتوجد العاصمه الصحيحه**').then(msg => {
-    let embed = new Discord.RichEmbed()
-    .setColor('#000000')
-    .setFooter("عواصم  |Heem Bot", 'https://cdn.discordapp.com/avatars/464357784247599104/98777979b17586bc1af26beaa423e818.png')
-    .setDescription(`**اكتب عاصمه: ${item.type}**`)
-
-    msg.channel.sendEmbed(embed).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
-
-        console.log(`[Typing] ${collected.first().author} typed the word.`);
-            let won = collected.first().author; 
-            points[won.id].points++;
-          })
-          .catch(collected => { 
-            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
-            console.log(`[Typing] ماحد قال الاجابه `);
-          })
-        })
-    })
-}
-});
-
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 50,
-  };
-if (message.content.startsWith('!math')) { 
-    if(!message.channel.guild) return message.reply('**This command for Servers**').then(m => m.delete(3000));
-
-const type = require('./read.json'); 
-const item = type[Math.floor(Math.random() * type.length)]; 
-const filter = response => { 
-    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**You have 15 Seconds**').then(msg => {
-    let embed = new Discord.RichEmbed()
-    .setColor('#000000')
-    .setFooter("Math  | Heem Bot", 'https://cdn.discordapp.com/avatars/464357784247599104/98777979b17586bc1af26beaa423e818.png')
-    .setDescription(`** ${item.type}**`)
-
-    msg.channel.sendEmbed(embed).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **Correct Answer**`); //mohamed192837465#7033صاحب الكود
-
-        console.log(`[Typing] ${collected.first().author} typed the word.`);
-            let won = collected.first().author; 
-            points[won.id].points++;
-          })
-          .catch(collected => { 
-            message.channel.send(`:x: **No One wrote the Correct Answer**`);
-            console.log(`[Typing] ماحد قال الاجابه `);
-          })
-        })
-    })
-}
 });
 
 var rebel = ["https://media.giphy.com/media/pjk3wZcciRENa/giphy.gif","http://78.media.tumblr.com/fd4383e21495f2bb10ed699cd73f22ca/tumblr_n5l0pk3w4E1so8ds0o1_500.gif","https://media1.giphy.com/media/14309XrKEC7yyk/giphy.gif","http://gifimage.net/wp-content/uploads/2017/06/anime-gif-13-1.gif","https://i.imgur.com/M3BG3Ck.gif","https://4.bp.blogspot.com/-yDd1fLFMKts/WeX_LrmWhwI/AAAAAAAALsU/mLO7KCD0DFMp8n8xbdMdJNR5V2D0D9WXwCLcBGAs/s1600/tenor.gif","https://secure.static.tumblr.com/940bbaba171f6b2f2dabd11c17fd3f20/kj1pjcr/jxWok11nj/tumblr_static_filename_640_v2.gif","https://data.whicdn.com/images/110768190/original.gif","http://78.media.tumblr.com/80f12fdc314760b2ba3e10204e33323d/tumblr_nc1n9weNg11tk3dxfo1_500.gif","https://78.media.tumblr.com/ec3f0546a20a75cd47c00e95ef0ba0a7/tumblr_o3oyhk49JC1u6348eo1_500.gif","https://thumbs.gfycat.com/MassiveUnlinedDarwinsfox-max-1mb.gif","https://data.whicdn.com/images/120798528/original.gif","https://i.gifer.com/NZcE.gif","https://media.giphy.com/media/2aH3YUqjx92cE/giphy.gif","https://78.media.tumblr.com/99fcbe4544d83d27babb216a3f3bb8a3/tumblr_n1shx2AC2e1qztgoio3_500.gif","https://data.whicdn.com/images/81429641/original.gif","https://78.media.tumblr.com/6eace49891b549d558f3d1a2c0ad3c98/tumblr_n4xmoqCrPj1spu161o8_500.gif","https://pa1.narvii.com/6088/b868bd47eb802373aa8b8203f76b07dd04846d1f_hq.gif","https://cdn.discordapp.com/attachments/458384513173684224/460742842503921669/Tumblr_mdi9s0YkbA1rao0vlo1_500.gif","https://cdn.discordapp.com/attachments/458384513173684224/460742882064728065/Chuunibyou-Demo-Koi-Ga-Shitai-6.gif"]
