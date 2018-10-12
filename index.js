@@ -41,9 +41,9 @@ client.on('ready', () => {
           client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});     //Heeeeeemo    
 });
 
-client.on('message', message => { 
-    if (message.content.startsWith('!av'))
-	var mentionned = message.mentions.users.first();
+client.on('message', message => {
+   if (message.content.startsWith("!avatar")) {
+       var mentionned = message.mentions.users.first();
    var x5bzm;
      if(mentionned){
          var x5bzm = mentionned;
@@ -52,11 +52,12 @@ client.on('message', message => {
          
      }
        const embed = new Discord.RichEmbed()
-       .setAuthor(`Showing ${message.author.username}'s Avatar`)
-       .setColor("#000000").setColor('#36393e') 
+       .setColor("#000000").setColor('#36393e')
+       .setAuthor(`${message.author.username}'s Avatar`)
        .setImage(`${x5bzm.avatarURL}`)
      message.channel.sendEmbed(embed);
-   })
+   }
+});
 
 
 client.on('message', message => {
