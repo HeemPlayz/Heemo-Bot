@@ -56,8 +56,7 @@ client.on('message', message => {
        .setColor("#000000").setColor('#36393e') 
        .setImage(`${x5bzm.avatarURL}`)
      message.channel.sendEmbed(embed);
-   }
-});
+   })
 
 
 client.on('message', message => {
