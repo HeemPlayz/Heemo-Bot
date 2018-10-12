@@ -53,7 +53,7 @@ client.on('message', message => {
      }
        const embed = new Discord.RichEmbed()
        .setColor("#000000").setColor('#36393e')
-       .setAuthor(`${message.author.username}'s Avatar`)
+       .setAuthor(`Showing ${message.author.username}'s Avatar`)
        .setImage(`${x5bzm.avatarURL}`)
      message.channel.sendEmbed(embed);
    }
@@ -1664,23 +1664,6 @@ client.on('message', message => {
    }
 });
 
-client.on('message', message => {
-   if (message.content.startsWith("!avatar")) {
-       var mentionned = message.mentions.users.first();
-   var x5bzm;
-     if(mentionned){
-         var x5bzm = mentionned;
-     } else {
-         var x5bzm = message.author;
-         
-     }
-       const embed = new Discord.RichEmbed()
-       .setColor("RANDOM")
-       .setImage(`${x5bzm.avatarURL}`)
-     message.channel.sendEmbed(embed);
-   }
-});
-
                    client.on('message', message => {
                                if(!message.channel.guild) return;
                        if (message.content.startsWith('!ping')) {
@@ -1691,7 +1674,7 @@ client.on('message', message => {
                        let embed = new Discord.RichEmbed()
                        .setAuthor(message.author.username,message.author.avatarURL)
                        .setThumbnail('https://cdn.discordapp.com/avatars/368141321547808768/c42716e13cb850f9ad0930af699472d0.png?size=2048nk')
-                       .setColor('RANDOM')
+                       .setColor('#000000').setColor('#36393e')
                        .addField('**Time Taken:**',msg + " ms")
                        .addField('**WebSocket:**',api + " ms")
         message.channel.send({embed:embed});
