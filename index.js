@@ -42,7 +42,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => { 
-    if (message.content.startsWith('!avatar1'))
+    if (message.content.startsWith('!av'))
 	var embedd = new Discord.RichEmbed()
 	.setColor('#000000') 
         .setAuthor(`Showing ${message.author.username}'s Avatar`)
