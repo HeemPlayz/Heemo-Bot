@@ -42,6 +42,39 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 0,
+  };
+if (message.content.startsWith(prefix + 'عواصم')) {
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+const type = require('./3awasem.json');
+const item = type[Math.floor(Math.random() * type.length)];
+const filter = response => {
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**👑لديك 15 ثانية للإجابة على السؤال!👑**').then(msg => {
+
+            
+msg.channel.send(`${item.type}`).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **الإجابة صحيحة بطل**`);
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let points = {}
+            let userData = points[message.author.id];
+            let userdata = require('./points.json');
+            userData.points++;
+          })
+          .catch(collected => {
+            message.channel.send(`🕓😀أنتهى الوقت أعد العب مرة آخرى😀🕓`);
+          })
+        })
+    })
+}
+});
+
+client.on('message', message => {
     var prefix ="$$"
     if(message.content.startsWith('!gif')) {
 console.log('[Gif Search] Developed By Ghost')
@@ -81,15 +114,15 @@ msg.channel.send(embed).then(() => {
         .then((collected) => {
          const sh = new Discord.RichEmbed()
 .setColor("04791c")
-.setDescription('**? |Good Job +1P**')
-.addField('Type G.mypoints', 'To Show ur Points' , true)
+.setDescription('**Good Job +1 Point**')
+.addField('Type !mypoints', 'To Show Your Points' , true)
 .setFooter(message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(sh);
         let won = collected.first().author;
                 points[won.id].points++;
         })
            .catch(collected => { // في حال لم يقم أحد بالإجابة
-            message.channel.send(`?? |**Time Is End**`);
+            message.channel.send(`**Time Is End**`);
            })
           fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err)
