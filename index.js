@@ -41,6 +41,16 @@ client.on('ready', () => {
           client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});     //Heeeeeemo    
 });
 
+client.on('message', message => { 
+    if (message.content.startsWith('!avatar1'))
+	var embedd = new Discord.RichEmbed()
+	.setColor('#00000') 
+    .setAuthor(`Showing ${message.author.username}'s Avatar`)
+    .setImage(`${message.author.avatarURL}`);
+	message.channel.send(embedd);
+});
+
+
 client.on('message', message => {
                   if (!points[message.author.id]) points[message.author.id] = {
                     points: 0,
