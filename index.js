@@ -44,9 +44,9 @@ client.on('ready', () => {
 client.on('message', message => { 
     if (message.content.startsWith('!avatar1'))
 	var embedd = new Discord.RichEmbed()
-	.setColor('#00000') 
-    .setAuthor(`Showing ${message.author.username}'s Avatar`)
-    .setImage(`${message.author.avatarURL}`);
+	.setColor('#000000') 
+        .setAuthor(`Showing ${message.author.username}'s Avatar`)
+        .setImage(`${message.author.avatarURL}`);
 	message.channel.send(embedd);
 });
 
