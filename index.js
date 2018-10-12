@@ -48,7 +48,7 @@ client.on('message', message => {
                   if (message.content.startsWith(prefix + 'type')) {
                     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
                   
-                  const type = require('./gamesbombot/type.json');
+                  const type = require('./type.json');
                   const item = type[Math.floor(Math.random() * type.length)];
                   const filter = response => {
                       return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -81,7 +81,7 @@ client.on('message', message => {
                 if (message.content.startsWith(prefix + 'rkb')) {
                   if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
                 
-                const type = require('./gamesbombot/RKB.json');
+                const type = require('./RKB.json');
                 const item = type[Math.floor(Math.random() * type.length)];
                 const filter = response => {
                     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
