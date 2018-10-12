@@ -43,11 +43,20 @@ client.on('ready', () => {
 
 client.on('message', message => { 
     if (message.content.startsWith('!av'))
-	var embedd = new Discord.RichEmbed()
-	.setColor('#000000').setColor('#36393e') 
-        .setAuthor(`Showing ${message.author.username}'s Avatar`)
-        .setImage(`${message.author.avatarURL}`);
-	message.channel.send(embedd);
+	var mentionned = message.mentions.users.first();
+   var x5bzm;
+     if(mentionned){
+         var x5bzm = mentionned;
+     } else {
+         var x5bzm = message.author;
+         
+     }
+       const embed = new Discord.RichEmbed()
+       .setAuthor(`Showing ${message.author.username}'s Avatar`)
+       .setColor("#000000").setColor('#36393e') 
+       .setImage(`${x5bzm.avatarURL}`)
+     message.channel.sendEmbed(embed);
+   }
 });
 
 
