@@ -742,7 +742,7 @@ const pubg = [
      if(!message.channel.guild) return message.reply('** This command only for servers **');
   var client= new Discord.RichEmbed()
   .setTitle("لعبه اسئله باتل جرواند")
-  .setColor('#FFA500')
+  .setColor('#000000').setColor('#36393e')
   .setDescription(`${pubg[Math.floor(Math.random() * pubg.length)]}`)
   .setImage("https://cdn.discordapp.com/attachments/416617103492251658/477741838292484127/pubg-orange-square.png")
                   .setTimestamp()
@@ -1395,7 +1395,7 @@ if (message.content === "!help") {
        message.react("😘")
           message.react("😵")
  const embed = new Discord.RichEmbed() 
-     .setColor("#ffff00")
+     .setColor("#000000").setColor('#36393e')
      .setThumbnail(message.author.avatarURL)
      .setDescription(`
 -🚀 Amazing Speed
@@ -3381,7 +3381,7 @@ if (message.content === "!help") {
        message.react("😘")
           message.react("😵")
  const embed = new Discord.RichEmbed() 
-     .setColor("#ffff00")
+     .setColor("#000000").setColor('#36393e')
      .setThumbnail(message.author.avatarURL)
      .setDescription(`
 -🚀 Amazing Speed
@@ -3542,12 +3542,12 @@ client.on('message', message => {
       message.author.sendMessage(invite.url)
     )
     const embed = new Discord.RichEmbed()
-        .setColor("2fff00")
+        .setColor("000000").setColor('#36393e')
         .setDescription("| :white_check_mark:  | :heart:  تم ارسال الرابط على الخاص  ")
         .setFooter("Heem Bot Team")
       message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
               const Embed11 = new Discord.RichEmbed()
-        .setColor("2fff00")
+        .setColor("000000").setColor('#36393e')
         .setDescription(`
 **-------------------
 -هذا هو الرابط 
