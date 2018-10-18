@@ -42,7 +42,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith('!discrim1'))
+    if (message.content.startsWith('!discrim'))
 
         var embed = new Discord.RichEmbed()
         .setTitle(`➥ ${message.author.username}#${message.author.discriminator}`)
@@ -3578,6 +3578,22 @@ client.on(`message`, message => {
 }
 });
 
+client.on(`message`, message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes(`youtub.e`)){
+    message.delete()
+    return message.reply(`**No Youtube Links **`)
+}
+});
+
+client.on(`message`, message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes(`youtu`)){
+    message.delete()
+    return message.reply(`**No Youtube Links **`)
+}
+});
+
 client.on('guildMemberAdd', member => {
   if(!ar[member.guild.id]) ar[member.guild.id] = {
   onoff: 'Off',
@@ -3806,49 +3822,6 @@ if(ra3d.content.startsWith('!cc')) {
               }
             }
        });
-
-client.on('message', message => {
-if(message.content.startsWith('!discrim') ) {
-     if(!message.channel.guild) return message.reply('** This command only for servers **')
-          var args = message.content.split(" ").slice(1);
-    let sent = 0
-    let count = 1;
-    
-      if(args){
-client.users.filter(u => u.discriminator == args[0]).forEach(u => {
-    if(sent > 4){
-     return
-    }
-    sent = sent + 1
-      message.channel.send(`
-
-      ** ${count}➥ ${u.tag}**
-         
-      `)
-      count++;
-})
-}
-}
-if(message.content ===('!discrim') ) {
-     if(!message.channel.guild) return message.reply('** This command only for servers **')
-  let sent = 0
-    let count = 1;
-          
-
-client.users.filter(u => u.discriminator == message.author.discriminator).forEach(u => {
-    if(sent > 4){
-        return
-    }
-    sent = sent + 1
-      message.channel.send(`
-
-      ** ${count}➥ ${u.tag}**
-         
-      `)
-      count++;
-})
-}
-});
 
 let id;
 let guild;
