@@ -42,6 +42,17 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+    if (message.content.startsWith('!discrim1'))
+
+        var embed = new Discord.RichEmbed()
+        .setTitle(`➥ ${message.author.username}#${message.author.discriminator}`)
+        .setColor('#000000').setColor('#36393e')
+        message.channel.send(embed);
+    
+
+});
+
+client.on('message', message => {
    if (message.content.startsWith("!avatar")) {
        var mentionned = message.mentions.users.first();
    var x5bzm;
