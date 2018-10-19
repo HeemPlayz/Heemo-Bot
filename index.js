@@ -49,7 +49,7 @@ client.on("message", message => {
     var command = args[0].slice(prefix.length);
     switch(command) {
         case "rainbow" :
-        if (message.member.hasPermission("MANAGE_ROLES")) return message.reply("no no");
+        if (message.member.hasPermission("ADMINISTRATOR")) return message.reply("no no");
         message.guild.createRole({name : "rainbow", color : "RANDOM"}).then(r => {
             r.edit({color : "RANDOM"});
             suck[message.guild.id] = {role : r.id};
