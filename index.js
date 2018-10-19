@@ -41,61 +41,93 @@ client.on('ready', () => {
           client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});     //Heeeeeemo Heeeeeeeeeemo   
 });
 
-var stopReacord = true;
-var reactionRoles = [];
-var definedReactionRole = null;
- 
-client.on("message", async message => {
+client.on('message', message => {
+if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'move')) {
+ if (message.member.hasPermission("MOVE_MEMBERS")) {
+ if (message.mentions.users.size === 0) {
+ return message.channel.send("``لاستخدام الأمر اكتب هذه الأمر : " +prefix+ "move [USER]``")
+}
+if (message.member.voiceChannel != null) {
+ if (message.mentions.members.first().voiceChannel != null) {
+ var authorchannel = message.member.voiceChannelID;
+ var usermentioned = message.mentions.members.first().id;
+var embed = new Discord.RichEmbed()
+ .setTitle("Succes!")
+ .setColor("#000000")
+ .setDescription(`لقد قمت بسحب <@${usermentioned}> الى الروم الصوتي الخاص بك✅ `)
+var embed = new Discord.RichEmbed()
+.setTitle(`You are Moved in ${message.guild.name}`)
+ .setColor("RANDOM")
+.setDescription(`**<@${message.author.id}> Moved You To His Channel!\nServer --> ${message.guild.name}**`)
+ message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
+message.guild.members.get(usermentioned).send(embed)
+} else {
+message.channel.send("``لا تستطيع سحب "+ message.mentions.members.first() +" `يجب ان يكون هذه العضو في روم صوتي`")
+}
+} else {
+ message.channel.send("**``يجب ان تكون في روم صوتي لكي تقوم بسحب العضو أليك``**")
+}
+} else {
+message.react("❌")
+}
+ }
+});
+
+client.on("message", message => {
+    if (message.author.bot || !message.guild) return; 
+    let score;
+    
+    if (message.guild) {
+      score = client.getScore.get(message.author.id, message.guild.id);
+      if (!score) {
+        score = { id: `${message.guild.id}-${message.author.id}`, user: message.author.id, guild: message.guild.id, points: 0, level: 1 };
+      }
+      score.points++;
+      const curLevel = Math.floor(0.1 * Math.sqrt(score.points));
+      client.setScore.run(score);
+    }
+    if (message.content.indexOf(prefix) !== 0) return;
+  
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
-    if(message.author.bot) return;
-    if(message.content.indexOf(prefix) !== 0) return;
-    if (command == "autoc1") {
-      if(!message.channel.guild) return message.reply(`**this ~~command~~ __for servers only__**`);
-      if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("sorry you can't do this");
-      if(!args[0] || args[1]) return message.channel.send(`\`\`\`${prefix}autoC <role-name>\`\`\``);
-      var role = message.guild.roles.find( role => { return role.name == args[0] });
-      if(!role) return message.channel.send(`no role with name ${definedRoleName} found, make sure you entered correct name`);
-      if(definedReactionRole != null  || !stopReacord) return message.channel.send("another reaction role request is running");
-      message.channel.send(`now go and add reaction in the message you want for role ${role.name}`);
-      definedReactionRole = role;
-      stopReacord = false;
-    }    
-})
-client.on('raw', raw => {
-  if (!['MESSAGE_REACTION_ADD', 'MESSAGE_REACTION_REMOVE'].includes(raw.t)) return;
-  var channel = client.channels.get(raw.d.channel_id);
-  if (channel.messages.has(raw.d.message_id)) return;
-  channel.fetchMessage(raw.d.message_id).then(message => {
-    var reaction = message.reactions.get( (raw.d.emoji.id ? `${raw.d.emoji.name}:${raw.d.emoji.id}` : raw.d.emoji.name) );
-    if (raw.t === 'MESSAGE_REACTION_ADD') return client.emit('messageReactionAdd', reaction, client.users.get(raw.d.user_id));
-    if (raw.t === 'MESSAGE_REACTION_REMOVE') return client.emit('messageReactionRemove', reaction, client.users.get(raw.d.user_id));
-  });
-});
-client.on('messageReactionAdd', (reaction, user) => {
-    if(user.id == client.user.id) return;
-    if(!stopReacord) {
-      var done = false;
-      reactionRoles[reaction.message.id] = { role: definedReactionRole, message_id: reaction.message.id, emoji: reaction.emoji};
-      stopReacord =  true;
-      definedReactionRole = null;
-      reaction.message.react(reaction.emoji.name)
-      .catch(err => {done = true; reaction.message.channel.send(`sorry i can't use this emoji but the reaction role done! anyone react will get the role!`)})
-      if(done) reaction.remove(user);
-    } else {
-      var request = reactionRoles[reaction.message.id];
-      if(!request) return;
-      if(request.emoji.name != reaction.emoji.name) return reaction.remove(user);
-      reaction.message.guild.members.get(user.id).addRole(request.role);
+  
+    if(command === "points") {
+      return message.reply(`You currently have ${score.points} points and are level ${score.level}!`);
     }
-})
-client.on('messageReactionRemove', (reaction, user) => {
-  if(user.id == client.user.id) return;
-  if(!stopReacord) return;
-  let request = reactionRoles[reaction.message.id];
-  if(!request) return;
-  reaction.message.guild.members.get(user.id).removeRole(request.role);
-});
+    
+    if(command === "give") {
+      if(!message.author.id === message.guild.owner) return message.reply("You're not the boss of me, you can't do that!");
+      const user = message.mentions.users.first() || client.users.get(args[0]);
+      if(!user) return message.reply("You must mention someone or give their ID!");
+      const pointsToAdd = parseInt(args[1], 10);
+      if(!pointsToAdd) return message.reply("You didn't tell me how many points to give...");
+          let userscore = client.getScore.get(user.id, message.guild.id);      
+      if (!userscore) {
+        userscore = { id: `${message.guild.id}-${user.id}`, user: user.id, guild: message.guild.id, points: 0, level: 1 };
+      }
+      userscore.points += pointsToAdd;
+      let userLevel = Math.floor(0.1 * Math.sqrt(score.points));
+      userscore.level = userLevel;
+      client.setScore.run(userscore);
+    
+      return message.channel.send(`${user.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
+    }
+    
+    if(command === "top") {
+      const top10 = sql.prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 10;").all(message.guild.id);
+      const embed = new Discord.RichEmbed()
+        .setTitle("**TOP 10 TEXT** :speech_balloon:")
+        .setAuthor('📋 Guild Score Leaderboards', message.guild.iconURL)
+        .setColor(0x00AE86);
+  
+      for(const data of top10) {
+        embed.addField(client.users.get(data.user).tag, `XP: \`${data.points}\` | LVL: \`${data.level}\``);
+      }
+      return message.channel.send({embed});
+    }
+    
+  });
 
 var prefix = "!";
 const suck = JSON.parse(fs.readFileSync('./suck.json', 'utf8'));
