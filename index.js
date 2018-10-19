@@ -42,6 +42,24 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+	 var prefix = "!";
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+if (command == "z5rf") {
+    let say = new Discord.RichEmbed()
+        .setTitle('Text emboss :')
+   message.channel.send(`\n ${zalgo(args.join(' '))}`);
+  }
+
+});
+
+client.on('message', message => {
 if(!message.channel.guild) return;
 if(message.content.startsWith('!move')) {
  if (message.member.hasPermission("MOVE_MEMBERS")) {
