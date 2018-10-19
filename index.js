@@ -41,6 +41,25 @@ client.on('ready', () => {
           client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});     //Heeeeeemo    
 });
 
+const suck = JSON.parse(fs.readFileSync('./suck.json', 'utf8'));
+// By HeemPlayz and M7MD
+client.on("message", message => {
+    fs.writeFile('./suck.json', JSON.stringify(suck));
+});
+client.on('ready', () => {
+    setInterval(function(){
+        client.guilds.forEach(g => {
+            if (suck[g.id]) {
+                if (suck[g.id].role) {
+                    var role = g.roles.get(suck[g.id].role);
+                    if (role) {
+                        role.edit({color : "RANDOM"});
+                    };
+                };
+            };
+        });
+    }, 1500);
+});
 client.on("message", message => {
     if (!message.content.startsWith(prefix)) return;
     if (message.author.bot) return;
@@ -49,9 +68,9 @@ client.on("message", message => {
     var command = args[0].slice(prefix.length);
     switch(command) {
         case "rainbow" :
-        if (message.member.hasPermission("ADMINISTRATOR")) return message.reply("no no");
+        if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("no no");
         message.guild.createRole({name : "rainbow", color : "RANDOM"}).then(r => {
-            r.edit({color : "RANDOM"});
+            r.edit({color : "RANDOm"});
             suck[message.guild.id] = {role : r.id};
         });
     };
