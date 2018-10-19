@@ -9,6 +9,7 @@ const figlet = require('figlet');
 const request = require('request');
 const superagent = require("superagent");
 const gif = require("gif-search");
+const zalgo = require("zalgolize");
 const moment = require('moment');
 const r1 = require('snekfetch'); 
 const fs = require('fs');
