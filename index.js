@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const Util = require('discord.js');
+const fs - require('fs');
 const Canvas = require("canvas")
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
