@@ -1489,154 +1489,6 @@ message.channel.awaitMessages(filte, { max: 1, time: 15000, errors: ['time'] })
  }
 });
 
-client.on("message", message => {
-if (message.content === "!help") {
-       message.react("😘")
-          message.react("😵")
- const embed = new Discord.RichEmbed() 
-     .setColor("#000000").setColor('#36393e')
-     .setThumbnail(message.author.avatarURL)
-     .setDescription(`
--🚀 Amazing Speed
--😎 Easy to Use
--💵 Free  
--📚 English Bot
-
-● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
-
-💎『General Commands』💎
-                       
-💎!server 『Server Informations』                      
-
-💎!servers 『To see how many bot joined Online 』  
-
-💎!bot 『Bot Informations』
-
-💎!inv-info 『Information for Invitation 』
-
-💎!date 『To Know what is the Date』
-
-💎!ping 『Bot MS Speed』
-
-💎!members 『Members Informations』
-
-💎!embed 『To write in Embed Way』
-
-💎!say 『Says what you say』
-
-💎!animal  『Shows Animals Pics』
-
-● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
-
-👑『Admin Commands』👑
-
-👑!rooms 『To know how many Rooms are in the server』
-
-👑!mute 『Give user a mute』
-
-👑!unmute 『Give user an unmute』
-
-👑!clear 『Clear the Chat with Number』
-
-👑!mcstats 『Give an informations for MC Server』
-
-👑!croles 『Create Ready Roles』
-
-👑!edit  『 Edit a Message 』
-
-● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
-
-:guitar: 『Music』 :guitar:
-
-:guitar: !play  『Play a song from YouTube』
-
-:guitar: !skip  『Skip a song』
-
-:guitar: !stop  『Stops the music』
-
-:guitar: !volume  『Change the volume of the bot』
-
-:guitar:!np  『The song that now playing』
-
-:guitar:!queue  『See the queue of songs』
-
-:guitar:!pause  『Pause the music』
-
-:guitar:!resume  『Resume the music』
-
-● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
-
-:tickets: 『Ticket』 :tickets:
-
-:tickets:!new 『Opens and New Ticket』
-
-:tickets:!close 『Close Your Ticket』
-
-● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
-
-:heavy_plus_sign: 『Extra』 :heavy_plus_sign:
-
-:heavy_plus_sign:!quran 『Plays Qur'an』
-
-:heavy_plus_sign:!slap 『Slap a Member』
-
-● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
-
-🎲『Roll』🎲
-
-🎲!roll 1   『Roll From 1 To 25』
-
-🎲!roll 2   『Roll From 1 to 50』
-
-🎲!roll 3   『Roll From 1 to 75』
-
-🎲!roll 4   『Roll From 1 to 100』
-
-● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
-
-🎴『Pic Commands』🎴
-
-🎴!avatar 『Shows your avatar or user avatar』
-
-🎴!image 『Server avatar』
-
-🎴Soon
-
-● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
-
-🎎『Welcome Types』🎎
-
-🎎 welcome 1 
-
-🎎 welcome 2
-
-🎎 welcome 3 
-
-🎎 welcome 4
-
-🎎 welcome 5
-
-● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
-
-💎『Support』💎
-
-!inv | Add the Bot
-
-Bot Developer | @YodaBrro#4557
-
-● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
-
-
-
-
-`)
-
-
-message.author.sendEmbed(embed)
-
-}
-}); 
-
 
 
 client.on("message", message => {
@@ -5581,5 +5433,153 @@ client.on('message',async message => {
     });
     }
   });
+
+client.on("message", message => {
+if (message.content === "!help") {
+       message.react("😘")
+          message.react("😵")
+ const embed = new Discord.RichEmbed() 
+     .setColor("#000000").setColor('#36393e')
+     .setThumbnail(message.author.avatarURL)
+     .setDescription(`
+-🚀 Amazing Speed
+-😎 Easy to Use
+-💵 Free  
+-📚 English Bot
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+💎『General Commands』💎
+                       
+💎!server 『Server Informations』                      
+
+💎!servers 『To see how many bot joined Online 』  
+
+💎!bot 『Bot Informations』
+
+💎!inv-info 『Information for Invitation 』
+
+💎!date 『To Know what is the Date』
+
+💎!ping 『Bot MS Speed』
+
+💎!members 『Members Informations』
+
+💎!embed 『To write in Embed Way』
+
+💎!say 『Says what you say』
+
+💎!animal  『Shows Animals Pics』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+👑『Admin Commands』👑
+
+👑!rooms 『To know how many Rooms are in the server』
+
+👑!mute 『Give user a mute』
+
+👑!unmute 『Give user an unmute』
+
+👑!clear 『Clear the Chat with Number』
+
+👑!mcstats 『Give an informations for MC Server』
+
+👑!croles 『Create Ready Roles』
+
+👑!edit  『 Edit a Message 』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+:guitar: 『Music』 :guitar:
+
+:guitar: !play  『Play a song from YouTube』
+
+:guitar: !skip  『Skip a song』
+
+:guitar: !stop  『Stops the music』
+
+:guitar: !volume  『Change the volume of the bot』
+
+:guitar:!np  『The song that now playing』
+
+:guitar:!queue  『See the queue of songs』
+
+:guitar:!pause  『Pause the music』
+
+:guitar:!resume  『Resume the music』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+:tickets: 『Ticket』 :tickets:
+
+:tickets:!new 『Opens and New Ticket』
+
+:tickets:!close 『Close Your Ticket』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
+
+:heavy_plus_sign: 『Extra』 :heavy_plus_sign:
+
+:heavy_plus_sign:!quran 『Plays Qur'an』
+
+:heavy_plus_sign:!slap 『Slap a Member』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
+
+🎲『Roll』🎲
+
+🎲!roll 1   『Roll From 1 To 25』
+
+🎲!roll 2   『Roll From 1 to 50』
+
+🎲!roll 3   『Roll From 1 to 75』
+
+🎲!roll 4   『Roll From 1 to 100』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+🎴『Pic Commands』🎴
+
+🎴!avatar 『Shows your avatar or user avatar』
+
+🎴!image 『Server avatar』
+
+🎴Soon
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+🎎『Welcome Types』🎎
+
+🎎 welcome 1 
+
+🎎 welcome 2
+
+🎎 welcome 3 
+
+🎎 welcome 4
+
+🎎 welcome 5
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+💎『Support』💎
+
+!inv | Add the Bot
+
+Bot Developer | @YodaBrro#4557
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+
+
+
+`)
+
+
+message.author.sendEmbed(embed)
+
+}
+}); 
 	    
 client.login(process.env.BOT_TOKEN)
