@@ -11,9 +11,7 @@ const superagent = require("superagent");
 const gif = require("gif-search");
 const zalgo = require("zalgolize");
 const moment = require('moment');
-const r1 = require('snekfetch'); 
-const fs = require('fs');
-const getYoutubeID = require('get-youtube-id');
+const r1 = require('snekfetch'); const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4"; //NourEldien Kfo
 let ar = JSON.parse(fs.readFileSync(`AutoRole.json`, `utf8`))
