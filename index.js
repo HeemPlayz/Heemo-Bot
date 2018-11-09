@@ -2196,18 +2196,6 @@ client.on('message', message => {
    }
 });
 
-client.on('message', message => {
-           if(!message.channel.guild) return;
-let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('!bc-users')){
-if(!message.author.id === 'Bot Owner ID') return;
-message.channel.sendMessage('Sending the message |:white_check_mark:')
-client.users.forEach(m =>{
-m.sendMessage(args)
-})
-}
-});
-
 
 client.on('message', message=>{
    if (message.content ==='!add-colors'){
@@ -3656,30 +3644,6 @@ client.on('message', message => {
         .setFooter("By:YodaBrro#4557")
       message.author.sendEmbed(Embed11)
     }
-});
-
-client.on(`message`, message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes(`youtube`)){
-    message.delete()
-    return message.reply(`**No Youtube Links **`)
-}
-});
-
-client.on(`message`, message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes(`youtub.e`)){
-    message.delete()
-    return message.reply(`**No Youtube Links **`)
-}
-});
-
-client.on(`message`, message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes(`youtu`)){
-    message.delete()
-    return message.reply(`**No Youtube Links **`)
-}
 });
 
 client.on('guildMemberAdd', member => {
